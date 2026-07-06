@@ -1,10 +1,10 @@
 resource "aws_dynamodb_table" "analytics" {
   name         = "ToggleMasterAnalytics"
   billing_mode = var.billing_mode
-  hash_key     = "id"
+  hash_key     = "event_id"
 
   attribute {
-    name = "id"
+    name = "event_id"
     type = "S"
   }
 
