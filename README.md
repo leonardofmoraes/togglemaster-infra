@@ -78,3 +78,26 @@ terraform destroy
 ```
 
 ## Estrutura
+
+```
+terraform/
+├── backend.tf         # configuração do backend remoto (S3)
+├── main.tf             # composição dos módulos
+├── provider.tf          # configuração do provider AWS
+├── variables.tf         # variáveis de entrada (região, nome do projeto, ambiente)
+├── terraform.tfvars      # valores das variáveis para este ambiente
+└── modules/             # módulos reutilizáveis (VPC, EKS, RDS, Redis)
+```
+
+## Variáveis principais
+
+| Variável | Descrição | Padrão |
+|---|---|---|
+| `aws_region` | Região da AWS | `us-east-1` |
+| `project_name` | Prefixo usado nos nomes dos recursos | `togglemaster` |
+| `environment` | Ambiente (dev, hml, prod) | `dev` |
+
+## Repositórios relacionados
+
+- [`togglemaster-gitops`](https://github.com/leonardofmoraes/togglemaster-gitops) — manifests Kubernetes, ArgoCD e stack de observabilidade
+- [`togglemaster-local-dev`](https://github.com/leonardofmoraes/togglemaster-local-dev) — ambiente de desenvolvimento local via docker-compose
